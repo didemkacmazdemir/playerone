@@ -3,6 +3,7 @@ package com.gameofthree.playerone;
 import com.gameofthree.playerone.controller.PlayOneController;
 import com.gameofthree.playerone.model.Result;
 import com.gameofthree.playerone.service.PlayerOneService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,14 @@ public class PlayerOneControllerTest {
         Result result = new Result();
         result.setNumber(19);
         result.setMessage("KEEP");
+
+        Result result2 = new Result();
+        result.setNumber(0);
+        result.setMessage("DONE");
         when(playerOneService.playNumber(56,"KEEP")).thenReturn(result);
+
+        Assert.assertEquals(result.getNumber(), 19);
+        Assert.assertEquals(result.getMessage(), "KEEP");
+
     }
 }
